@@ -1,0 +1,452 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
+
+:root {
+    --bg: #050a14;
+    --bg-gradient: radial-gradient(circle at 10% 20%, #1a2542 0%, #050a14 60%);
+    --bg-accent: radial-gradient(circle at 90% 80%, rgba(83, 240, 191, 0.08) 0%, transparent 40%);
+    --ink: #eef3ff;
+    --muted: #94a3b8;
+    --accent: #53f0bf;
+    /* Neon Mint */
+    --accent-2: #3b82f6;
+    /* Bright Blue */
+    --accent-3: #a855f7;
+    /* Purple */
+    --panel-bg: rgba(20, 31, 56, 0.75);
+    --panel-border: rgba(255, 255, 255, 0.1);
+    --glass: blur(12px);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    background-color: var(--bg);
+    background-image: var(--bg-gradient), var(--bg-accent);
+    color: var(--ink);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Force Reveal settings to respect our background */
+.reveal-viewport,
+.reveal {
+    background: transparent !important;
+}
+
+.reveal .slides section {
+    height: 100%;
+    text-align: left;
+    padding: 2rem 4rem;
+    box-sizing: border-box;
+    /* Removed display: flex to fix ghosting issues */
+}
+
+/* Helper for vertical centering content */
+.v-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+/* Typography */
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+    font-family: 'Outfit', sans-serif;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5em 0;
+}
+
+.reveal h1 {
+    font-size: 4.2rem;
+    /* Larger */
+    line-height: 1.1;
+    font-weight: 800;
+}
+
+.reveal h2 {
+    font-size: 3.2rem;
+    /* Larger */
+    line-height: 1.1;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.reveal h3 {
+    font-size: 1.8rem;
+    /* Larger */
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+}
+
+.reveal p,
+.reveal li {
+    font-size: 1.6rem;
+    /* Much Larger */
+    line-height: 1.5;
+    color: #eef3ff;
+    /* Brighter */
+}
+
+.reveal ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.reveal li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+}
+
+.reveal li::before {
+    content: "•";
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Utility Classes */
+.kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 1rem;
+    color: var(--accent-2);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+.subtitle {
+    font-size: 1.8rem !important;
+    /* Larger */
+    color: #cbd5e1;
+    /* Brighter muted */
+    font-weight: 400;
+    max-width: 900px;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Grids and Layouts */
+.two-col,
+.three-col,
+.four-col,
+.team-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.two-col {
+    grid-template-columns: 1fr 1fr;
+}
+
+.three-col {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.four-col {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.team-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.tight {
+    gap: 1rem;
+}
+
+/* Panels / Cards */
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    backdrop-filter: var(--glass);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease;
+}
+
+.panel:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.highlight-panel {
+    border: 1px solid var(--accent);
+    background: rgba(83, 240, 191, 0.1);
+}
+
+.photo-panel {
+    padding: 0;
+    overflow: hidden;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+/* Specific Components */
+.hero-band {
+    display: flex;
+    gap: 4rem;
+    /* Increased gap */
+    margin-top: 4rem;
+    padding: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.4);
+    /* Stronger scrim */
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    justify-content: center;
+    /* Center the items */
+}
+
+.band-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.6rem;
+    /* Much larger */
+    color: #ffffff;
+    font-weight: 600;
+    align-items: center;
+    text-align: center;
+}
+
+.band-item span {
+    font-size: 1.1rem;
+    /* Larger */
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    /* Brighter (Neon Mint) */
+    opacity: 1;
+    /* Fully visible */
+    font-weight: 700;
+}
+
+.bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 0.5rem;
+}
+
+.tag {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--panel-border);
+    text-align: center;
+    font-size: 1rem;
+    color: var(--muted);
+}
+
+.tag.wide {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 1.5rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: var(--accent-2);
+}
+
+.quote-panel .quote {
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--ink);
+}
+
+.process-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.node {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid var(--panel-border);
+}
+
+.pill {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+/* Layout Overrides for specific slides */
+.hero,
+.closing {
+    justify-content: center !important;
+    align-items: center;
+    text-align: center !important;
+}
+
+.hero .kicker,
+.closing .kicker {
+    align-self: center;
+}
+
+/* Fix for Grid vs Flex conflict */
+.hero-band.three-col {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    justify-content: center;
+}
+
+/* New 2x2 Grid for Density */
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2rem;
+    height: 60vh;
+}
+
+/* Tool Spectrum Slide */
+.tool-spectrum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 2rem;
+    position: relative;
+    padding: 0 2rem;
+}
+
+.spectrum-line {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent), #fff);
+    border-radius: 4px;
+    position: absolute;
+    top: 110px;
+    /* Positioned below the 80px icons + padding */
+    left: 0;
+    z-index: 1;
+}
+
+.tool-nodes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    /* Removed margin-top: -2rem */
+    align-items: flex-start;
+    /* Align to top */
+}
+
+.tool-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    width: 100px;
+    /* Reduced width to fit more items */
+}
+
+.tool-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s;
+}
+
+.tool-icon img,
+.tool-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tool-node:hover .tool-icon {
+    transform: scale(1.1);
+    border-color: var(--accent);
+}
+
+.tool-label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.tool-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.spectrum-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-2);
+    font-weight: 700;
+    padding: 0 4rem;
+    /* Indent slightly */
+}
+
+.spectrum-labels div:nth-child(2) {
+    transform: translateX(40px);
+    /* Nudge middle label right */
+}
+
+/* Adjust last label */
+.spectrum-labels div:last-child {
+    color: #53f0bf;
+}
